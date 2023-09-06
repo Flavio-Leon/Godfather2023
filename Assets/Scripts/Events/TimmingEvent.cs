@@ -1,12 +1,14 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
+using System.Linq;
+using Unity.VisualScripting;
 
 namespace GF
 {
     internal class TimmingEvent : MonoBehaviour, IEvent
     {
+
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
 
@@ -26,9 +28,10 @@ namespace GF
             AssignButton();
             InitTimer();
             SetState();
+
         }
 
-        private void Update()
+        void Update()
         {
             var currentScale = Timming.transform.localScale;
 
@@ -39,6 +42,7 @@ namespace GF
 
             if (Timming.transform.localScale.x > 0.2f && Timming.transform.localScale.x < 0.3f)
             {
+
                 if (Input.GetKey(_button.MappingKeyCode))
                 {
                     StartCoroutine(Win());
@@ -53,13 +57,13 @@ namespace GF
             var newScale = new Vector3(currentScale.x - Time.deltaTime * VitesseTimming, currentScale.y - Time.deltaTime * VitesseTimming, currentScale.z);
 
             Timming.transform.localScale = newScale;
+
         }
 
         private void InitTimer()
         {
             _timerStart = Random.Range(1, 5);
         }
-
         private void SetState()
         {
             var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position);
@@ -70,8 +74,8 @@ namespace GF
 
         private void ResetState()
         {
-        }
 
+        }
         public IEnumerator Win()
         {
             ResetState();
