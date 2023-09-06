@@ -66,7 +66,10 @@ namespace GF
         }
         private void SetState()
         {
-            // Timming.transform.position = _button.transform.position; 
+            var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position);
+            worldPos.z = 0;
+
+            Timming.transform.position = worldPos;
         }
 
         private void ResetState()
