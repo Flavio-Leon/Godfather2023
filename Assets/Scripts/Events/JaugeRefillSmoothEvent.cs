@@ -1,46 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JaugeRefillSmoothEvent : MonoBehaviour
+namespace GF
 {
-    public Slider slider;
-    public float VitesseDescente;
-    public float refillValue;
-
-    public void SetMaxFluid(float Fluid)
+    public class JaugeRefillSmoothEvent : MonoBehaviour
     {
-        slider.maxValue = Fluid;
-        slider.value = Fluid;
-    }
+        public Slider slider;
 
-    public void SetFluid(float Fluid)
-    {
-        slider.value = Fluid;
-    }
+        public float VitesseDescente;
+        public float refillValue;
 
-    private void Start()
-    {
-        slider.value = 1;
-    }
-
-    void Update()
-    {
-        SetFluid(slider.value);
-
-        if (Input.GetKey(KeyCode.L))
+        public void SetMaxFluid(float Fluid)
         {
-            Refill(refillValue/1000);
-        } else
-        {
-            slider.value -= Time.deltaTime * VitesseDescente * EventPool.GameSpeed;
+            slider.maxValue = Fluid;
+            slider.value = Fluid;
         }
-    }
 
-    public void Refill(float refill)
-    {
-        slider.value += refill;
-        SetFluid(slider.value);
+        public void SetFluid(float Fluid)
+        {
+            slider.value = Fluid;
+        }
+
+        private void Start()
+        {
+            slider.value = 1;
+        }
+
+        private void Update()
+        {
+            SetFluid(slider.value);
+
+            if (Input.GetKey(KeyCode.L))
+            {
+                Refill(refillValue / 1000);
+            }
+            else
+            {
+                slider.value -= Time.deltaTime * VitesseDescente * EventPool.Instance.GameSpeed;
+            }
+        }
+
+        public void Refill(float refill)
+        {
+            slider.value += refill;
+            SetFluid(slider.value);
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace GF
 {
-    public class Jauge : MonoBehaviour
+    public class JaugeEvent : MonoBehaviour
     {
         public Slider slider;
 
