@@ -12,8 +12,7 @@ namespace GF
         public KeyCode MappingKeyCode => (KeyCode)Mapping;
 
         [field: SerializeField] public Image Border { get; private set; }
-
-        private Image _bg;
+        [field: SerializeField] public Image Background { get; private set; }
 
         private void Awake()
         {
@@ -24,7 +23,7 @@ namespace GF
                 Debug.LogWarning(nameof(EInputMap.NO_MAPPING), this);
 
             if (TryGetComponent(out Image image))
-                _bg = image;
+                Background = image;
         }
 
         private void Update()
@@ -32,7 +31,7 @@ namespace GF
             if (Input.GetKeyDown(MappingKeyCode))
                 Debug.Log(Mapping);
 
-            _bg.color = Input.GetKey(MappingKeyCode) ? Color.red : Color.white;
+            Background.color = Input.GetKey(MappingKeyCode) ? Color.green : Color.white;
         }
     }
 }
