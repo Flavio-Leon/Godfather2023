@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: _event
       value: 
       objectReference: {fileID: 5298234993988704914, guid: a60a26c279b5af0419a7c7486c25a88a, type: 3}
+    - target: {fileID: 6161712864849575637, guid: 14c2e1ec6daa3f347bf0877c377e114f, type: 3}
+      propertyPath: _parent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7585910712797181775, guid: 14c2e1ec6daa3f347bf0877c377e114f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3684,7 +3688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3054694466523984769, guid: e7c0a4adb1b1fcd4c803319b12125d3d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 3054694466523984769, guid: e7c0a4adb1b1fcd4c803319b12125d3d, type: 3}
       propertyPath: m_AnchoredPosition.y
