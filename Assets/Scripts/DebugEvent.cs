@@ -6,7 +6,7 @@ internal class DebugEvent : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             Instantiate(_event);
         }
