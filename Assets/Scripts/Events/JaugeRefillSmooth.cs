@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class JaugeRefillSmooth : MonoBehaviour
 {
     public Slider slider;
+
     public float VitesseDescente;
     public float refillValue;
 
@@ -25,14 +24,15 @@ public class JaugeRefillSmooth : MonoBehaviour
         slider.value = 1;
     }
 
-    void Update()
+    private void Update()
     {
         SetFluid(slider.value);
 
         if (Input.GetKey(KeyCode.L))
         {
-            Refill(refillValue/1000);
-        } else
+            Refill(refillValue / 1000);
+        }
+        else
         {
             slider.value -= Time.deltaTime * VitesseDescente * EventPool.GameSpeed;
         }

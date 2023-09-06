@@ -1,31 +1,30 @@
-using GF;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Jauge : MonoBehaviour
 {
     public Slider slider;
+
     public float VitesseDescente;
     public float refillValue;
-        public void SetMaxFluid(float Fluid)
-        {
-            slider.maxValue = Fluid;
-            slider.value = Fluid;
-        }
 
-        public void SetFluid(float Fluid)
-        {
-            slider.value = Fluid;
-        }
+    public void SetMaxFluid(float Fluid)
+    {
+        slider.maxValue = Fluid;
+        slider.value = Fluid;
+    }
+
+    public void SetFluid(float Fluid)
+    {
+        slider.value = Fluid;
+    }
 
     private void Start()
     {
         slider.value = 1;
     }
 
-    void Update()
+    private void Update()
     {
         SetFluid(slider.value);
 
@@ -40,7 +39,7 @@ public class Jauge : MonoBehaviour
     public void Refill(float refill)
     {
         slider.value += refill;
+
         SetFluid(slider.value);
     }
-
 }

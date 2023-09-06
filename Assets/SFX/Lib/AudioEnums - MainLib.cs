@@ -4,11 +4,7 @@
         BoutonHautBlanc3,
         BoutonHautBlanc4,
         BoutonHautBlanc5,
-        BoutonHautBlanc6,
-        BoutonHautGaucheBleu,
-        BoutonHautGaucheJaune,
-        BoutonHautGaucheRouge,
-        BoutonHautGaucheVert
+        BoutonHautBlanc6
     }
     public enum MainLibMusic {
     }

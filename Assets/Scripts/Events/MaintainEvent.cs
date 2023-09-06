@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GF
 {
-    internal class MaintainEvent : MonoBehaviour
+    internal class MaintainEvent : MonoBehaviour, IEvent
     {
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
@@ -17,18 +17,15 @@ namespace GF
         private TextMeshProUGUI _buttonText;
 
         private bool _hasBegunPressing;
+        private int _signalIt;
 
-        private IEnumerator Start()
+        private void Awake()
         {
             AssignButton();
-
             InitTimer();
+            SetState();
 
-            _button.Border.color = _eventBorderColor;
-            _buttonText = _button.GetComponentInChildren<TextMeshProUGUI>();
-            _buttonText.text = $"{_timerStart}";
-
-            yield return null;
+            StartCoroutine(Signal());
         }
 
         private void Update()
@@ -43,9 +40,8 @@ namespace GF
                 _hasBegunPressing = true;
 
                 _timerLeft -= Time.deltaTime;
-
                 _button.Border.fillAmount = _timerLeft / _timerStart;
-
+                _button.InnerTimer.fillAmount = _button.Border.fillAmount;
                 _buttonText.text = _timerLeft.ToString("0.0");
 
                 if (_timerLeft < 0)
@@ -71,22 +67,16 @@ namespace GF
             _timerStart = Random.Range(1, 5);
         }
 
-        private IEnumerator Win()
+        private void SetState()
         {
-            ResetState();
-            Destroy(gameObject);
+            _button.Border.color = _eventBorderColor;
 
-            yield return null;
-        }
+            _button.Background.color = Color.red;
 
-        private IEnumerator Lose()
-        {
-            _hasBegunPressing = false;
+            _button.InnerTimer.enabled = true;
 
-            ResetState();
-            Destroy(gameObject);
-
-            yield return null;
+            _buttonText = _button.GetComponentInChildren<TextMeshProUGUI>();
+            _buttonText.text = _timerStart.ToString("0.0");
         }
 
         private void ResetState()
@@ -94,7 +84,40 @@ namespace GF
             _button.Border.color = _defaultBorderColor;
             _button.Border.fillAmount = 1;
 
+            _button.Background.color = _button.DefaultColor;
+
+            _button.InnerTimer.enabled = false;
+            _button.InnerTimer.fillAmount = 1;
+
             _buttonText.text = string.Empty;
+        }
+
+        public IEnumerator Signal()
+        {
+            while (!_hasBegunPressing)
+            {
+                _button.Background.color = _signalIt % 2 == 0 ? Color.red : _button.DefaultColor;
+                _signalIt++;
+                yield return new WaitForSeconds(.5f);
+            }
+        }
+
+        public IEnumerator Win()
+        {
+            ResetState();
+            Destroy(gameObject);
+
+            yield return null;
+        }
+
+        public IEnumerator Lose()
+        {
+            _hasBegunPressing = false;
+
+            ResetState();
+            Destroy(gameObject);
+
+            yield return null;
         }
     }
 }
