@@ -1,18 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class LaunchSequence : MonoBehaviour
+namespace GF
 {
-    // Start is called before the first frame update
-    void Start()
+    internal class LaunchSequence : MonoBehaviour, IEvent
     {
-        
-    }
+        [SerializeField] private Image _background;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.Return))
+            {
+                StartCoroutine(Win());
+            }
+        }
+
+        public IEnumerator Lose()
+        {
+            Destroy(gameObject);
+
+            yield return null;
+        }
+
+        public IEnumerator Win()
+        {
+            EventPool.Instance.Begin();
+
+            Destroy(gameObject);
+
+            yield return null;
+        }
     }
 }

@@ -1,45 +1,48 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Jauge : MonoBehaviour
+namespace GF
 {
-    public Slider slider;
-
-    public float VitesseDescente;
-    public float refillValue;
-
-    public void SetMaxFluid(float Fluid)
+    public class Jauge : MonoBehaviour
     {
-        slider.maxValue = Fluid;
-        slider.value = Fluid;
-    }
+        public Slider slider;
 
-    public void SetFluid(float Fluid)
-    {
-        slider.value = Fluid;
-    }
+        public float VitesseDescente;
+        public float refillValue;
 
-    private void Start()
-    {
-        slider.value = 1;
-    }
-
-    private void Update()
-    {
-        SetFluid(slider.value);
-
-        slider.value -= Time.deltaTime * VitesseDescente * EventPool.GameSpeed;
-
-        if (Input.GetKeyDown(KeyCode.M))
+        public void SetMaxFluid(float Fluid)
         {
-            Refill(refillValue);
+            slider.maxValue = Fluid;
+            slider.value = Fluid;
         }
-    }
 
-    public void Refill(float refill)
-    {
-        slider.value += refill;
+        public void SetFluid(float Fluid)
+        {
+            slider.value = Fluid;
+        }
 
-        SetFluid(slider.value);
+        private void Start()
+        {
+            slider.value = 1;
+        }
+
+        private void Update()
+        {
+            SetFluid(slider.value);
+
+            slider.value -= Time.deltaTime * VitesseDescente * EventPool.Instance.GameSpeed;
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Refill(refillValue);
+            }
+        }
+
+        public void Refill(float refill)
+        {
+            slider.value += refill;
+
+            SetFluid(slider.value);
+        }
     }
 }
