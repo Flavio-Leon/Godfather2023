@@ -9,10 +9,11 @@ namespace GF
         public static readonly List<Button> Buttons = new();
 
         [field: SerializeField] public EInputMap Mapping { get; private set; }
-
-        [SerializeField] private Image _image;
-
         public KeyCode MappingKeyCode => (KeyCode)Mapping;
+
+        [field: SerializeField] public Image Border { get; private set; }
+
+        private Image _bg;
 
         private void Awake()
         {
@@ -23,7 +24,7 @@ namespace GF
                 Debug.LogWarning(nameof(EInputMap.NO_MAPPING), this);
 
             if (TryGetComponent(out Image image))
-                _image = image;
+                _bg = image;
         }
 
         private void Update()
@@ -31,7 +32,7 @@ namespace GF
             if (Input.GetKeyDown(MappingKeyCode))
                 Debug.Log(Mapping);
 
-            _image.color = Input.GetKey(MappingKeyCode) ? Color.red : Color.white;
+            _bg.color = Input.GetKey(MappingKeyCode) ? Color.red : Color.white;
         }
     }
 }
