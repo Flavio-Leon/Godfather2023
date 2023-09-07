@@ -3721,6 +3721,10 @@ PrefabInstance:
       propertyPath: <Mapping>k__BackingField
       value: 122
       objectReference: {fileID: 0}
+    - target: {fileID: 8131754010115725464, guid: e7c0a4adb1b1fcd4c803319b12125d3d, type: 3}
+      propertyPath: m_Color.a
+      value: 0.07058824
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

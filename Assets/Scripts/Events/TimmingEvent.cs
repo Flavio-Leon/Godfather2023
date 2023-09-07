@@ -1,25 +1,31 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine.U2D;
+using UnityEngine.UI;
 
 namespace GF
 {
-    internal class TimmingEvent : Event, IEvent
+    internal class TimmingEvent : MonoBehaviour, IEvent
     {
+
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
-
         [SerializeField] private float _timerStart;
         [SerializeField] private float _timerLeft;
+        [SerializeField] private float _timerWindow;
 
-        public float VitesseTimming;
         public GameObject Timming;
+        public GameObject Repere1;
+        public GameObject Repere2;
         private Button _button;
+        public float ScaleStart = 3;
+        public float ScaleEnd = 0;
         private TextMeshProUGUI _buttonText;
 
         private bool _hasBegunPressing;
-        private int _assignCount;
         private int _signalIt;
 
         private void Awake()
@@ -27,55 +33,68 @@ namespace GF
             AssignButton();
             InitTimer();
             SetState();
+
+            _timerLeft = _timerStart;
+
+            float repere1ScaleFactor = Mathf.Lerp(ScaleEnd, ScaleStart, _timerWindow);
+            var repere1NewScale = new Vector3(repere1ScaleFactor, repere1ScaleFactor, Repere1.transform.localScale.z);
+            Repere1.transform.localScale = repere1NewScale;
+
+            Repere2.transform.localScale = new Vector3(ScaleEnd, ScaleEnd, Repere2.transform.localScale.z); ;
+
         }
 
-        private void Update()
+        void Update()
         {
             var currentScale = Timming.transform.localScale;
 
             if (Input.GetKey(_button.MappingKeyCode))
             {
-                StartCoroutine(Lose());
-            }
-
-            if (Timming.transform.localScale.x > 0.2f && Timming.transform.localScale.x < 0.3f)
-            {
-                if (Input.GetKey(_button.MappingKeyCode))
-                {
+                if (_timerLeft < _timerWindow * _timerStart) {
                     StartCoroutine(Win());
+                    Debug.Log("Win");
+                } else
+                {
+                    StartCoroutine(Lose());
+                    Debug.Log("Loose");
                 }
             }
-
-            if (Timming.transform.localScale.x < 0.19f)
+            if (_timerLeft < _timerWindow * _timerStart)
+            {
+                Timming.GetComponent<Image>().color = Color.green;
+            }
+            if (_timerLeft <= 0f)
             {
                 StartCoroutine(Lose());
             }
 
-            var newScale = new Vector3(currentScale.x - Time.deltaTime * VitesseTimming, currentScale.y - Time.deltaTime * VitesseTimming, currentScale.z);
+            _timerLeft -= Time.deltaTime;
+            float percent = _timerLeft/_timerStart;
+            float ScaleFactor = Mathf.Lerp(ScaleEnd, ScaleStart, percent);
+            var newScale = new Vector3(ScaleFactor,ScaleFactor, currentScale.z);
 
             Timming.transform.localScale = newScale;
+
         }
 
         private void InitTimer()
         {
-            _timerStart = Random.Range(1, 5);
+            _timerStart = 1/EventPool.Instance.GameSpeed + 1/EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f) ;
         }
-
         private void SetState()
         {
-            _button.IsBusy = true;
+            // var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position);
+            // worldPos.z = 0;
 
-            var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position);
-            worldPos.z = 0;
-
-            Timming.transform.position = worldPos;
+             Timming.transform.position = _button.transform.position;
+             Repere1.transform.position = _button.transform.position;
+             Repere2.transform.position = _button.transform.position;
         }
 
         private void ResetState()
         {
-            _button.IsBusy = false;
-        }
 
+        }
         public IEnumerator Win()
         {
             ResetState();
@@ -97,17 +116,6 @@ namespace GF
             var index = Random.Range(0, Button.Buttons.Count);
 
             _button = Button.Buttons.ElementAtOrDefault(index);
-
-            if (_button.IsBusy)
-            {
-                if (_assignCount <= Button.Buttons.Count)
-                {
-                    _assignCount++;
-                    AssignButton();
-                }
-
-                Destroy(gameObject);
-            }
         }
     }
 }

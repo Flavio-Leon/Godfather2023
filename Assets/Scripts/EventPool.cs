@@ -20,11 +20,13 @@ namespace GF
         private int _sameEventCounter;
         private bool _isSame;
 
+        public float TimeScale;
+
         private void Awake() => Instance = this;
 
         private void Start()
         {
-            Time.timeScale = 0;
+            Time.timeScale = TimeScale;
         }
 
         private IEnumerator Loop()
