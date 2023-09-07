@@ -1,7 +1,14 @@
 using System.Collections;
+using UnityEngine;
 
-internal interface IEvent
+namespace GF
 {
-    IEnumerator Win();
-    IEnumerator Lose();
+    internal interface IEvent
+    {
+        IEnumerator Win();
+        IEnumerator Lose();
+    }
+
+    internal class Event : MonoBehaviour
+    { }
 }

@@ -5,6 +5,8 @@ namespace GF
 {
     public class JaugeRefillSmoothEvent : MonoBehaviour
     {
+        [SerializeField] private Button _button;
+
         public Slider slider;
 
         public float VitesseDescente;
@@ -30,7 +32,7 @@ namespace GF
         {
             SetFluid(slider.value);
 
-            if (Input.GetKey(KeyCode.L))
+            if (Input.GetKey(_button.MappingKeyCode))
             {
                 Refill(refillValue / 1000);
             }

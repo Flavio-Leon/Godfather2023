@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 namespace GF
 {
-    internal class MaintainEvent : MonoBehaviour, IEvent
+    internal class MaintainEvent : Event, IEvent
     {
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
@@ -14,9 +13,9 @@ namespace GF
         [SerializeField] private float _timerLeft;
 
         private Button _button;
-        private TextMeshProUGUI _buttonText;
 
         private bool _hasBegunPressing;
+        private int _assignCount;
         private int _signalIt;
 
         private void Awake()
@@ -42,7 +41,7 @@ namespace GF
                 _timerLeft -= Time.deltaTime;
                 _button.Border.fillAmount = _timerLeft / _timerStart;
                 _button.InnerTimer.fillAmount = _button.Border.fillAmount;
-                _buttonText.text = _timerLeft.ToString("0.0");
+                _button.Text.text = _timerLeft.ToString("0.0");
 
                 if (_timerLeft < 0)
                 {
@@ -60,27 +59,41 @@ namespace GF
             var index = Random.Range(0, Button.Buttons.Count);
 
             _button = Button.Buttons.ElementAtOrDefault(index);
+
+            if (_button.IsBusy)
+            {
+                if (_assignCount <= Button.Buttons.Count)
+                {
+                    _assignCount++;
+                    AssignButton();
+                }
+
+                Destroy(gameObject);
+            }
         }
 
         private void InitTimer()
         {
-            _timerStart = Random.Range(1, 5);
+            _timerStart = Random.Range(1, 3);
         }
 
         private void SetState()
         {
+            _button.IsBusy = true;
+
             _button.Border.color = _eventBorderColor;
 
             _button.Background.color = Color.red;
 
             _button.InnerTimer.enabled = true;
 
-            _buttonText = _button.GetComponentInChildren<TextMeshProUGUI>();
-            _buttonText.text = _timerStart.ToString("0.0");
+            _button.Text.text = _timerStart.ToString("0.0");
         }
 
         private void ResetState()
         {
+            _button.IsBusy = false;
+
             _button.Border.color = _defaultBorderColor;
             _button.Border.fillAmount = 1;
 
@@ -89,7 +102,7 @@ namespace GF
             _button.InnerTimer.enabled = false;
             _button.InnerTimer.fillAmount = 1;
 
-            _buttonText.text = string.Empty;
+            _button.Text.text = _button.DefaultText;
         }
 
         public IEnumerator Signal()

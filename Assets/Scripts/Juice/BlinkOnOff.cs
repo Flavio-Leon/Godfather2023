@@ -14,7 +14,7 @@ namespace GF
             while (true)
             {
                 _target.SetActive(!_target.activeSelf);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSecondsRealtime(.5f);
             }
         }
     }

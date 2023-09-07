@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,11 @@ namespace GF
         [field: SerializeField] public Image Background { get; private set; }
         [field: SerializeField] public Image InnerTimer { get; private set; }
 
+        [field: SerializeField] public TextMeshProUGUI Text { get; private set; }
+        public string DefaultText { get; private set; }
+
+        [field: SerializeField] public bool IsBusy { get; set; }
+
         private Color _lastColor;
 
         private void Awake()
@@ -29,6 +35,9 @@ namespace GF
 
             _lastColor = Background.color;
             DefaultColor = _lastColor;
+
+            Text.text = MappingKeyCode.ToString();
+            DefaultText = Text.text;
         }
 
         private void Update()

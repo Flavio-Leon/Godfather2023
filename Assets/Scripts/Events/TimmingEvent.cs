@@ -1,14 +1,12 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using System.Linq;
-using Unity.VisualScripting;
 
 namespace GF
 {
-    internal class TimmingEvent : MonoBehaviour, IEvent
+    internal class TimmingEvent : Event, IEvent
     {
-
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
 
@@ -21,6 +19,7 @@ namespace GF
         private TextMeshProUGUI _buttonText;
 
         private bool _hasBegunPressing;
+        private int _assignCount;
         private int _signalIt;
 
         private void Awake()
@@ -28,10 +27,9 @@ namespace GF
             AssignButton();
             InitTimer();
             SetState();
-
         }
 
-        void Update()
+        private void Update()
         {
             var currentScale = Timming.transform.localScale;
 
@@ -42,7 +40,6 @@ namespace GF
 
             if (Timming.transform.localScale.x > 0.2f && Timming.transform.localScale.x < 0.3f)
             {
-
                 if (Input.GetKey(_button.MappingKeyCode))
                 {
                     StartCoroutine(Win());
@@ -57,15 +54,17 @@ namespace GF
             var newScale = new Vector3(currentScale.x - Time.deltaTime * VitesseTimming, currentScale.y - Time.deltaTime * VitesseTimming, currentScale.z);
 
             Timming.transform.localScale = newScale;
-
         }
 
         private void InitTimer()
         {
             _timerStart = Random.Range(1, 5);
         }
+
         private void SetState()
         {
+            _button.IsBusy = true;
+
             var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position);
             worldPos.z = 0;
 
@@ -74,8 +73,9 @@ namespace GF
 
         private void ResetState()
         {
-
+            _button.IsBusy = false;
         }
+
         public IEnumerator Win()
         {
             ResetState();
@@ -97,6 +97,17 @@ namespace GF
             var index = Random.Range(0, Button.Buttons.Count);
 
             _button = Button.Buttons.ElementAtOrDefault(index);
+
+            if (_button.IsBusy)
+            {
+                if (_assignCount <= Button.Buttons.Count)
+                {
+                    _assignCount++;
+                    AssignButton();
+                }
+
+                Destroy(gameObject);
+            }
         }
     }
 }

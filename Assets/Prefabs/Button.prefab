@@ -53,6 +53,8 @@ MonoBehaviour:
   <Border>k__BackingField: {fileID: 7893210357272540133}
   <Background>k__BackingField: {fileID: 8131754010115725464}
   <InnerTimer>k__BackingField: {fileID: 8201562717539236385}
+  <Text>k__BackingField: {fileID: 5747113976330606821}
+  <IsBusy>k__BackingField: 0
 --- !u!1 &2116346107277825081
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,10 +164,10 @@ RectTransform:
   - {fileID: 1850647289852149740}
   m_Father: {fileID: 3054694466523984769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1091874188575033823
 CanvasRenderer:
