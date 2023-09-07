@@ -1,3 +1,4 @@
+using JSAM;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +13,12 @@ namespace GF
         [SerializeField] private float _timerStart;
         [SerializeField] private float _timerLeft;
 
+        //insert variable audio
+        [SerializeField] private SoundFileObject _audio1;
+        [SerializeField] private SoundFileObject _audio2;
+        [SerializeField] private SoundFileObject _audio3;
+        [SerializeField] private SoundFileObject _audio4;
+
         private Button _button;
 
         private bool _hasBegunPressing;
@@ -25,12 +32,24 @@ namespace GF
             SetState();
 
             StartCoroutine(Signal());
+
+            //audio 1 ici
+            AudioManager.PlaySound(_audio1);
         }
 
         private void Update()
         {
             if (Input.GetKey(_button.MappingKeyCode))
             {
+                //audio 2 ici
+                AudioManager.StopSound(_audio1);
+
+                if (!AudioManager.IsSoundPlaying(_audio2))
+                {
+                    AudioManager.PlaySound(_audio2);
+                }
+                //fin audio 2
+
                 if (!_hasBegunPressing)
                 {
                     _timerLeft = _timerStart;
@@ -117,6 +136,11 @@ namespace GF
 
         public IEnumerator Win()
         {
+            //audio 3 win ici
+            AudioManager.StopSound(_audio2);
+
+            AudioManager.PlaySound(_audio3);
+
             SendWin();
 
             ResetState();
@@ -127,6 +151,11 @@ namespace GF
 
         public IEnumerator Lose()
         {
+            //audio 4 lose ici
+            AudioManager.StopSound(_audio2);
+
+            AudioManager.PlaySound(_audio4);
+
             SendLose();
 
             _hasBegunPressing = false;

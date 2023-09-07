@@ -46,4 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultBorderColor: {r: 0, g: 0, b: 0, a: 0}
   _eventBorderColor: {r: 1, g: 0.5, b: 0, a: 1}
-  _button: {fileID: 0}
+  _timerStart: 0
+  _timerLeft: 0
+  _audio1: {fileID: 11400000, guid: 7b3e5dfa01c8d4d42bfbc3550e5b8bb9, type: 2}
+  _audio2: {fileID: 11400000, guid: 520f04f2a4449f54883c831ec0213f4f, type: 2}
+  _audio3: {fileID: 11400000, guid: 8391e5a17a79a01488534a09f8cceb6a, type: 2}
+  _audio4: {fileID: 11400000, guid: bd75303b7915a51448539b114a8f6957, type: 2}
