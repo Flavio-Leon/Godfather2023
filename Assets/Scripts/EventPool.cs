@@ -35,27 +35,32 @@ namespace GF
 
             while (true)
             {
-                var index = Random.Range(0, _events.Count);
-                var eventObject = _events.ElementAtOrDefault(index);
-                var currentEvent = eventObject.GetComponent<Event>();
-
-                _isSame = _lastEvent != null && currentEvent.GetType() == _lastEvent.GetType();
-
-                if (_isSame)
-                    _sameEventCounter++;
-                else
-                    _sameEventCounter = 0;
-
-                Debug.Log(_sameEventCounter);
-
-                if (_sameEventCounter < _maxConsecutiveEvent)
+                if(_events.Count > 0)
                 {
-                    Instantiate(eventObject);
+                    var index = Random.Range(0, _events.Count);
+                    var eventObject = _events.ElementAtOrDefault(index);
+                    var currentEvent = eventObject.GetComponent<Event>();
 
-                    _lastEvent = currentEvent;
+                    _isSame = _lastEvent != null && currentEvent.GetType() == _lastEvent.GetType();
 
-                    yield return new WaitForSeconds(5);
+                    if (_isSame)
+                        _sameEventCounter++;
+                    else
+                        _sameEventCounter = 0;
+
+                    Debug.Log(_sameEventCounter);
+
+                    if (_sameEventCounter < _maxConsecutiveEvent)
+                    {
+                        Instantiate(eventObject);
+
+                        _lastEvent = currentEvent;
+
+                        yield return new WaitForSeconds(5);
+                    }
                 }
+
+                yield return null;
             }
         }
 
