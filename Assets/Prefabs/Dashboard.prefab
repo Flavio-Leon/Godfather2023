@@ -1755,10 +1755,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3807427840105304150, guid: e7c0a4adb1b1fcd4c803319b12125d3d, type: 3}
-      propertyPath: <Mapping>k__BackingField
-      value: 96
-      objectReference: {fileID: 0}
     - target: {fileID: 5747113976330606821, guid: e7c0a4adb1b1fcd4c803319b12125d3d, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -2627,7 +2623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3807427840105304150, guid: e7c0a4adb1b1fcd4c803319b12125d3d, type: 3}
       propertyPath: <Mapping>k__BackingField
-      value: 47
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 5747113976330606821, guid: e7c0a4adb1b1fcd4c803319b12125d3d, type: 3}
       propertyPath: m_fontColor.b

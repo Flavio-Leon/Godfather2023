@@ -1,16 +1,13 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using System.Linq;
-using Unity.VisualScripting;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 
 namespace GF
 {
-    internal class TimmingEvent : MonoBehaviour, IEvent
+    internal class TimmingEvent : Event, IEvent
     {
-
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
         [SerializeField] private float _timerStart;
@@ -41,19 +38,20 @@ namespace GF
             Repere1.transform.localScale = repere1NewScale;
 
             Repere2.transform.localScale = new Vector3(ScaleEnd, ScaleEnd, Repere2.transform.localScale.z); ;
-
         }
 
-        void Update()
+        private void Update()
         {
             var currentScale = Timming.transform.localScale;
 
             if (Input.GetKey(_button.MappingKeyCode))
             {
-                if (_timerLeft < _timerWindow * _timerStart) {
+                if (_timerLeft < _timerWindow * _timerStart)
+                {
                     StartCoroutine(Win());
                     Debug.Log("Win");
-                } else
+                }
+                else
                 {
                     StartCoroutine(Lose());
                     Debug.Log("Loose");
@@ -69,31 +67,29 @@ namespace GF
             }
 
             _timerLeft -= Time.deltaTime;
-            float percent = _timerLeft/_timerStart;
+            float percent = _timerLeft / _timerStart;
             float ScaleFactor = Mathf.Lerp(ScaleEnd, ScaleStart, percent);
-            var newScale = new Vector3(ScaleFactor,ScaleFactor, currentScale.z);
+            var newScale = new Vector3(ScaleFactor, ScaleFactor, currentScale.z);
 
             Timming.transform.localScale = newScale;
-
         }
 
         private void InitTimer()
         {
-            _timerStart = 1/EventPool.Instance.GameSpeed + 1/EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f) ;
+            _timerStart = 1 / EventPool.Instance.GameSpeed + 1 / EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f);
         }
         private void SetState()
         {
-            // var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position);
-            // worldPos.z = 0;
+            // var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position); worldPos.z
+            // = 0;
 
-             Timming.transform.position = _button.transform.position;
-             Repere1.transform.position = _button.transform.position;
-             Repere2.transform.position = _button.transform.position;
+            Timming.transform.position = _button.transform.position;
+            Repere1.transform.position = _button.transform.position;
+            Repere2.transform.position = _button.transform.position;
         }
 
         private void ResetState()
         {
-
         }
         public IEnumerator Win()
         {
