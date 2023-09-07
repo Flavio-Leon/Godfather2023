@@ -22,6 +22,7 @@ namespace GF
         public string DefaultText { get; private set; }
 
         [field: SerializeField] public bool IsBusy { get; set; }
+        public GameObject Sprite;
 
         private Color _lastColor;
 
@@ -38,6 +39,12 @@ namespace GF
 
             Text.text = MappingKeyCode.ToString();
             DefaultText = Text.text;
+
+            if ( Sprite != null)
+            {
+                Sprite.SetActive(false);
+            }
+
         }
 
         private void Update()
@@ -48,9 +55,19 @@ namespace GF
 
                 _lastColor = Background.color;
                 Background.color = Color.green;
+                if (Sprite != null) { 
+                Sprite?.SetActive(true);
+                }
             }
             else if (Input.GetKeyUp(MappingKeyCode))
+            {
+                if (Sprite != null)
+                {
+                    Sprite?.SetActive(false);
+                }
                 Background.color = DefaultColor;
+            }
+
         }
     }
 }
