@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d15ae218647a2d4f85e14306846c10c, type: 3}
-  m_Name: BoutonHautGaucheRouge
+  m_Name: ButtonSTv5
   m_EditorClassIdentifier: 
   safeName: 
   presetDescription: 
-  files:
-  - {fileID: 8300000, guid: 3d6cdb53f12d41a43ac32c5bcab5bd41, type: 3}
+  files: []
   loopStart: 0
   loopEnd: 0
   bpm: 120
@@ -47,8 +46,8 @@ MonoBehaviour:
     rate: 0
     depth: 0
   distortionFilter:
-    enabled: 1
-    distortionLevel: 1
+    enabled: 0
+    distortionLevel: 0
   echoFilter:
     enabled: 0
     delay: 0
@@ -65,20 +64,20 @@ MonoBehaviour:
     highpassResonanceQ: 0
   reverbFilter:
     enabled: 0
-    reverbPreset: 1
+    reverbPreset: 0
     dryLevel: 0
     room: 0
     roomHF: 0
     roomLF: 0
-    decayTime: 1
-    decayHFRatio: 0.5
-    reflectionsLevel: -10000
+    decayTime: 0
+    decayHFRatio: 0
+    reflectionsLevel: 0
     reflectionsDelay: 0
     reverbLevel: 0
-    reverbDelay: 0.04
-    hFReference: 5000
-    lFReference: 250
-    diffusion: 100
-    density: 100
+    reverbDelay: 0
+    hFReference: 0
+    lFReference: 0
+    diffusion: 0
+    density: 0
   neverRepeat: 0
   lastClipIndex: -1

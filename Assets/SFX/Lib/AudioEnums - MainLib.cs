@@ -1,10 +1,29 @@
     public enum MainLibSounds {
+        Alertv1,
         BoutonHautBlanc1,
         BoutonHautBlanc2,
         BoutonHautBlanc3,
         BoutonHautBlanc4,
         BoutonHautBlanc5,
-        BoutonHautBlanc6
+        BoutonHautBlanc6,
+        BoutonHautGaucheBleu,
+        BoutonHautGaucheJaune,
+        BoutonHautGaucheRouge,
+        BoutonHautGaucheVert,
+        ButtonSTv1,
+        ButtonSTv2,
+        ButtonSTv3,
+        ButtonSTv4,
+        ButtonSTv5,
+        Décompressionv1,
+        Déploimentv1,
+        FAILv1,
+        InterphoneSTv1,
+        Machinev1,
+        Phaserstv1,
+        Sweep,
+        WarningSTinvertedv1,
+        WarningSTv1
     }
     public enum MainLibMusic {
     }
