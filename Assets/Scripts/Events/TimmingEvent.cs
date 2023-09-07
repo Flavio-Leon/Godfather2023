@@ -27,13 +27,18 @@ namespace GF
 
         private void Awake()
         {
-            AssignButton();
+            if (!AssignButton())
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             InitTimer();
             SetState();
 
             _timerLeft = _timerStart;
 
-            float repere1ScaleFactor = Mathf.Lerp(ScaleEnd, ScaleStart, _timerWindow);
+            var repere1ScaleFactor = Mathf.Lerp(ScaleEnd, ScaleStart, _timerWindow);
             var repere1NewScale = new Vector3(repere1ScaleFactor, repere1ScaleFactor, Repere1.transform.localScale.z);
             Repere1.transform.localScale = repere1NewScale;
 
@@ -116,11 +121,25 @@ namespace GF
             yield return null;
         }
 
-        private void AssignButton()
+        private bool AssignButton()
         {
-            var index = Random.Range(0, Button.Buttons.Count);
+            var busyButtons = Button.Buttons.FindAll(x => x.IsBusy).ToList();
+            if (busyButtons.Count == Button.Buttons.Count)
+            {
+                print("AssignButton: all busy");
+                return false;
+            }
 
+            var index = Random.Range(0, Button.Buttons.Count);
             _button = Button.Buttons.ElementAtOrDefault(index);
+
+            if (_button.IsBusy)
+            {
+                print("AssignButton: retry");
+                return AssignButton();
+            }
+
+            return true;
         }
     }
 }
