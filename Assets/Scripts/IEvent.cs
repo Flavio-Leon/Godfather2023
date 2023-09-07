@@ -9,6 +9,7 @@ namespace GF
         IEnumerator Lose();
     }
 
-    internal class Event : MonoBehaviour
-    { }
+    internal abstract class Event : MonoBehaviour
+    {
+    }
 }

@@ -63,7 +63,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &218764468802154942
 MonoBehaviour:
@@ -125,8 +125,8 @@ MonoBehaviour:
   Timming: {fileID: 7804981646932670526}
   Repere1: {fileID: 2610997102441568205}
   Repere2: {fileID: 4136220137946442911}
-  ScaleStart: 15
-  ScaleEnd: 5
+  ScaleStart: 10
+  ScaleEnd: 3
 --- !u!1 &2610997102441568205
 GameObject:
   m_ObjectHideFlags: 0

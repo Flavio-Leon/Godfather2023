@@ -5,6 +5,8 @@ namespace GF
 {
     public class JaugeEvent : MonoBehaviour
     {
+        [SerializeField] private Button _button;
+
         public Slider slider;
 
         public float VitesseDescente;
@@ -32,7 +34,7 @@ namespace GF
 
             slider.value -= Time.deltaTime * VitesseDescente * EventPool.Instance.GameSpeed;
 
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(_button.MappingKeyCode))
             {
                 Refill(refillValue);
             }
