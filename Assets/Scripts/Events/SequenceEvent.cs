@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GF
 {
-    internal class SequenceEvent: Event, IEvent
+    internal class SequenceEvent : Event, IEvent
     {
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
@@ -35,8 +35,8 @@ namespace GF
             _button3.IsBusy = true;
             _button4 = GetButton();
             _button4.IsBusy = true;
-            _button5 = GetButton(); 
-            _button5.IsBusy = true; 
+            _button5 = GetButton();
+            _button5.IsBusy = true;
             InitTimer();
             _timerLeft = _timerStart;
             StartCoroutine(Button1Activate());
@@ -44,8 +44,8 @@ namespace GF
 
         private void Update()
         {
-            if (istimed == true) { 
-
+            if (istimed == true)
+            {
                 _timerLeft -= Time.deltaTime;
                 Text.text = _timerLeft.ToString("0.0");
 
@@ -58,20 +58,20 @@ namespace GF
 
         private Button GetButton()
         {
-            var index = Random.Range(0, Button.Buttons.Count);
+            var busyButtons = Button.Buttons.FindAll(x => x.IsBusy).ToList();
+            if (busyButtons.Count == Button.Buttons.Count)
+            {
+                print("AssignButton: all busy");
+                return null;
+            }
 
+            var index = Random.Range(0, Button.Buttons.Count);
             var button = Button.Buttons.ElementAtOrDefault(index);
 
             if (button.IsBusy)
             {
-                if (_assignCount <= Button.Buttons.Count)
-                {
-                    _assignCount++;
-                  return  GetButton();
-                }
-
-                Destroy(gameObject);
-
+                print("AssignButton: retry");
+                return GetButton();
             }
 
             return button;
@@ -136,51 +136,49 @@ namespace GF
 
         public IEnumerator Lose()
         {
-
             ResetState();
             Destroy(gameObject);
 
             yield return null;
         }
-        IEnumerator Button1Activate()
+        private IEnumerator Button1Activate()
         {
-            _button1.Background.color = Color.blue;
+            _button1.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button1.MappingKeyCode));
             _button1.Background.color = _defaultBorderColor;
             StartCoroutine(Button2Activate());
         }
 
-        IEnumerator Button2Activate()
+        private IEnumerator Button2Activate()
         {
-            _button2.Background.color = Color.blue;
+            _button2.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button2.MappingKeyCode));
             _button2.Background.color = _defaultBorderColor;
             StartCoroutine(Button3Activate());
         }
 
-        IEnumerator Button3Activate()
+        private IEnumerator Button3Activate()
         {
-            _button3.Background.color = Color.blue;
+            _button3.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button3.MappingKeyCode));
             _button3.Background.color = _defaultBorderColor;
-            StartCoroutine (Button4Activate());
+            StartCoroutine(Button4Activate());
         }
 
-        IEnumerator Button4Activate()
+        private IEnumerator Button4Activate()
         {
-            _button4.Background.color = Color.blue;
+            _button4.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button4.MappingKeyCode));
             _button4.Background.color = _defaultBorderColor;
             StartCoroutine(Button5Activate());
         }
 
-        IEnumerator Button5Activate()
+        private IEnumerator Button5Activate()
         {
-            _button5.Background.color = Color.blue;
+            _button5.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button5.MappingKeyCode));
             _button5.Background.color = _defaultBorderColor;
             StartCoroutine(Win());
         }
-
     }
 }

@@ -1,5 +1,6 @@
 using JSAM;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace GF
 {
     internal class MaintainEvent : Event, IEvent
     {
+        public static readonly List<MaintainEvent> MaintainEvents = new();
+
         [SerializeField] private Color _defaultBorderColor;
         [SerializeField] private Color _eventBorderColor;
 
@@ -27,6 +30,8 @@ namespace GF
 
         private void Start()
         {
+            MaintainEvents.Add(this);
+
             if (!AssignButton())
             {
                 Destroy(gameObject);
@@ -84,6 +89,8 @@ namespace GF
 
         private void OnDestroy()
         {
+            MaintainEvents.Remove(this);
+
             if (_button != null)
             {
                 ResetState();

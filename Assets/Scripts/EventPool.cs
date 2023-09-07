@@ -52,11 +52,23 @@ namespace GF
 
                     if (_sameEventCounter < _maxConsecutiveEvent)
                     {
-                        Instantiate(eventObject);
+                        var go = Instantiate(eventObject);
+
+                        if (MaintainEvent.MaintainEvents.Count > 3)
+                        {
+                            LoseGame();
+                        }
 
                         _lastEvent = currentEvent;
 
-                        yield return new WaitForSeconds(5);
+                        if (currentEvent.GetType() == typeof(SequenceEvent))
+                        {
+                            yield return new WaitUntil(() => go == null);
+                        }
+                        else
+                        {
+                            yield return new WaitForSeconds(5);
+                        }
                     }
                 }
 
@@ -74,6 +86,11 @@ namespace GF
         public void RestartGame()
         {
             SceneManager.LoadScene(0);
+        }
+
+        public void LoseGame()
+        {
+            print("lose game");
         }
     }
 }

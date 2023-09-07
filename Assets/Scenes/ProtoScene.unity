@@ -1710,6 +1710,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1801743817063791898, guid: 5038b935602cc974b826c295d8acb946, type: 3}
     - target: {fileID: 508032670179988257, guid: 1b40459822482a54eb9154572d38a8d4, type: 3}
+      propertyPath: _events.Array.data[2]
+      value: 
+      objectReference: {fileID: 1801743817063791898, guid: 5038b935602cc974b826c295d8acb946, type: 3}
+    - target: {fileID: 508032670179988257, guid: 1b40459822482a54eb9154572d38a8d4, type: 3}
       propertyPath: <GameSpeed>k__BackingField
       value: 1
       objectReference: {fileID: 0}
