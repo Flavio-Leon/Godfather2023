@@ -15,7 +15,7 @@ MonoBehaviour:
   safeName: 
   presetDescription: 
   files:
-  - {fileID: 8300000, guid: 5b61ad422dc9ad1429f1be959191aa0f, type: 3}
+  - {fileID: 8300000, guid: 1313acb69ae3a9b4896e39c68294aade, type: 3}
   loopStart: 0
   loopEnd: 0
   bpm: 120
@@ -39,13 +39,13 @@ MonoBehaviour:
   bypassReverbZones: 0
   chorusFilter:
     enabled: 0
-    dryMix: 0
-    wetMix1: 0
-    wetMix2: 0
-    wetMix3: 0
-    delay: 0
-    rate: 0
-    depth: 0
+    dryMix: 0.5
+    wetMix1: 0.5
+    wetMix2: 0.5
+    wetMix3: 0.5
+    delay: 40
+    rate: 0.8
+    depth: 0.03
   distortionFilter:
     enabled: 0
     distortionLevel: 0
