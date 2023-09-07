@@ -41,6 +41,11 @@ namespace GF
             {
                 slider.value -= Time.deltaTime * VitesseDescente * EventPool.Instance.GameSpeed;
             }
+
+            if (slider.value <= 0)
+            {
+                EventPool.Instance.LoseGame();
+            }
         }
 
         public void Refill(float refill)

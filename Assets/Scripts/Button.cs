@@ -37,14 +37,13 @@ namespace GF
             _lastColor = Background.color;
             DefaultColor = _lastColor;
 
-            Text.text = MappingKeyCode.ToString();
+            Text.text = MappingKeyCode.ToString().Replace("Alpha", string.Empty).Replace("Arrow", string.Empty);
             DefaultText = Text.text;
 
-            if ( Sprite != null)
+            if (Sprite != null)
             {
                 Sprite.SetActive(false);
             }
-
         }
 
         private void Update()
@@ -55,8 +54,9 @@ namespace GF
 
                 _lastColor = Background.color;
                 Background.color = Color.green;
-                if (Sprite != null) { 
-                Sprite?.SetActive(true);
+                if (Sprite != null)
+                {
+                    Sprite?.SetActive(true);
                 }
             }
             else if (Input.GetKeyUp(MappingKeyCode))
@@ -67,7 +67,6 @@ namespace GF
                 }
                 Background.color = DefaultColor;
             }
-
         }
     }
 }

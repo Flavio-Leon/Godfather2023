@@ -88,6 +88,8 @@ namespace GF
         {
             _button.IsBusy = true;
 
+            _button.Background.color = Color.cyan;
+
             // var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position); worldPos.z
             // = 0;
 
@@ -99,6 +101,8 @@ namespace GF
         private void ResetState()
         {
             _button.IsBusy = false;
+
+            _button.Background.color = _button.DefaultColor;
         }
 
         public IEnumerator Win()

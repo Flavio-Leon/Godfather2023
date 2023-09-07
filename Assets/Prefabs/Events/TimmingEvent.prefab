@@ -121,11 +121,11 @@ MonoBehaviour:
   _eventBorderColor: {r: 0, g: 0, b: 0, a: 0}
   _timerStart: 0
   _timerLeft: 0
-  _timerWindow: 0.1
+  _timerWindow: 0.5
   Timming: {fileID: 7804981646932670526}
   Repere1: {fileID: 2610997102441568205}
   Repere2: {fileID: 4136220137946442911}
-  ScaleStart: 10
+  ScaleStart: 5
   ScaleEnd: 3
 --- !u!1 &2610997102441568205
 GameObject:

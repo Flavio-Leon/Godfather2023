@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ namespace GF
     internal class EventPool : MonoBehaviour
     {
         public static EventPool Instance { get; private set; }
+
+        [field: SerializeField] public TextMeshProUGUI Text { get; private set; }
 
         [field: SerializeField] public float GameSpeed { get; set; }
 
@@ -91,6 +94,7 @@ namespace GF
         public void LoseGame()
         {
             print("lose game");
+            RestartGame();
         }
     }
 }

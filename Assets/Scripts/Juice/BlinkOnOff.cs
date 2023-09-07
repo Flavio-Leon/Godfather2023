@@ -13,8 +13,8 @@ namespace GF
         {
             while (true)
             {
-                _target.SetActive(!_target.activeSelf);
                 yield return new WaitForSecondsRealtime(.5f);
+                _target.SetActive(!_target.activeSelf);
             }
         }
     }

@@ -38,6 +38,11 @@ namespace GF
             {
                 Refill(refillValue);
             }
+
+            if (slider.value <= 0)
+            {
+                EventPool.Instance.LoseGame();
+            }
         }
 
         public void Refill(float refill)

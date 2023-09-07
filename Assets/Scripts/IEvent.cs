@@ -14,10 +14,12 @@ namespace GF
         protected void SendWin()
         {
             EventPool.Instance.GameSpeed += .1f;
+            EventPool.Instance.Text.text = "Speed: " + EventPool.Instance.GameSpeed.ToString("0.0");
         }
 
         protected void SendLose()
         {
+            EventPool.Instance.LoseGame();
         }
     }
 }
