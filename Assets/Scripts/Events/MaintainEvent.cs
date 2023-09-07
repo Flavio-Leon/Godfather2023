@@ -25,11 +25,20 @@ namespace GF
         private int _assignCount;
         private int _signalIt;
 
-        private void Awake()
+        private void Start()
         {
-            AssignButton();
+            if (!AssignButton())
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             InitTimer();
-            SetState();
+
+            if (_button != null)
+            {
+                SetState();
+            }
 
             StartCoroutine(Signal());
 
@@ -73,22 +82,33 @@ namespace GF
             }
         }
 
-        private void AssignButton()
+        private void OnDestroy()
         {
-            var index = Random.Range(0, Button.Buttons.Count);
+            if (_button != null)
+            {
+                ResetState();
+            }
+        }
 
+        private bool AssignButton()
+        {
+            var busyButtons = Button.Buttons.FindAll(x => x.IsBusy).ToList();
+            if (busyButtons.Count == Button.Buttons.Count)
+            {
+                print("AssignButton: all busy");
+                return false;
+            }
+
+            var index = Random.Range(0, Button.Buttons.Count);
             _button = Button.Buttons.ElementAtOrDefault(index);
 
             if (_button.IsBusy)
             {
-                if (_assignCount <= Button.Buttons.Count)
-                {
-                    _assignCount++;
-                    AssignButton();
-                }
-
-                Destroy(gameObject);
+                print("AssignButton: retry");
+                return AssignButton();
             }
+
+            return true;
         }
 
         private void InitTimer()
@@ -143,7 +163,6 @@ namespace GF
 
             SendWin();
 
-            ResetState();
             Destroy(gameObject);
 
             yield return null;
@@ -160,7 +179,6 @@ namespace GF
 
             _hasBegunPressing = false;
 
-            ResetState();
             Destroy(gameObject);
 
             yield return null;

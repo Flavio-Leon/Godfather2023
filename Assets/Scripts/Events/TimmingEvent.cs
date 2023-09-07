@@ -78,8 +78,11 @@ namespace GF
         {
             _timerStart = 1 / EventPool.Instance.GameSpeed + 1 / EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f);
         }
+
         private void SetState()
         {
+            _button.IsBusy = true;
+
             // var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position); worldPos.z
             // = 0;
 
@@ -90,6 +93,7 @@ namespace GF
 
         private void ResetState()
         {
+            _button.IsBusy = false;
         }
 
         public IEnumerator Win()
