@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace GF
@@ -11,6 +12,7 @@ namespace GF
 
         [SerializeField] private float _timerStart;
         [SerializeField] private float _timerLeft;
+        [field: SerializeField] public TextMeshProUGUI Text { get; private set; }
 
         private Button _button1;
         private Button _button2;
@@ -21,6 +23,7 @@ namespace GF
         private int _assignCount;
         private int _signalIt;
         public float SequenceTimer;
+        public bool istimed;
 
         private void Awake()
         {
@@ -35,33 +38,22 @@ namespace GF
             _button5 = GetButton(); 
             _button5.IsBusy = true; 
             InitTimer();
-            SetState();
+            _timerLeft = _timerStart;
+            StartCoroutine(Button1Activate());
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(_button1.MappingKeyCode))
-            {
-                if (Input.GetKeyDown(_button2.MappingKeyCode) )
+            if (istimed == true) { 
+
+                _timerLeft -= Time.deltaTime;
+                Text.text = _timerLeft.ToString("0.0");
+
+                if (_timerLeft < 0f)
                 {
-                    if (Input.GetKeyDown(_button3.MappingKeyCode ))
-                    {
-                        if (Input.GetKeyDown(_button4.MappingKeyCode) )
-                        {
-                            if (Input .GetKeyDown(_button5.MappingKeyCode) ) 
-                            {
-                                StartCoroutine(Win());
-                            }
-                        }
-                    }
+                    StartCoroutine(Lose());
                 }
             }
-            if (_timerStart <= 0f)
-            {
-                StartCoroutine(Lose());
-            }
-
-            _timerStart -= Time.deltaTime;
         }
 
         private Button GetButton()
@@ -88,28 +80,6 @@ namespace GF
         private void InitTimer()
         {
             _timerStart = SequenceTimer * 1 / EventPool.Instance.GameSpeed;
-        }
-
-        private void SetState()
-        {
-
-            _button1.Border.color = _eventBorderColor;
-            _button2.Border.color = _eventBorderColor;
-            _button3.Border.color = _eventBorderColor;
-            _button4.Border.color = _eventBorderColor;
-            _button5.Border.color = _eventBorderColor;
-
-            _button1.InnerTimer.enabled = true;
-            _button2.InnerTimer.enabled = true;
-            _button3.InnerTimer.enabled = true;
-            _button4.InnerTimer.enabled = true;
-            _button5.InnerTimer.enabled = true;
-
-            _button1.Text.text = _timerStart.ToString("0.0");
-            _button2.Text.text = _timerStart.ToString("0.0");
-            _button3.Text.text = _timerStart.ToString("0.0");
-            _button4.Text.text = _timerStart.ToString("0.0");
-            _button5.Text.text = _timerStart.ToString("0.0");
         }
 
         private void ResetState()
@@ -172,5 +142,45 @@ namespace GF
 
             yield return null;
         }
+        IEnumerator Button1Activate()
+        {
+            _button1.Background.color = Color.blue;
+            yield return new WaitUntil(() => Input.GetKeyDown(_button1.MappingKeyCode));
+            _button1.Background.color = _defaultBorderColor;
+            StartCoroutine(Button2Activate());
+        }
+
+        IEnumerator Button2Activate()
+        {
+            _button2.Background.color = Color.blue;
+            yield return new WaitUntil(() => Input.GetKeyDown(_button2.MappingKeyCode));
+            _button2.Background.color = _defaultBorderColor;
+            StartCoroutine(Button3Activate());
+        }
+
+        IEnumerator Button3Activate()
+        {
+            _button3.Background.color = Color.blue;
+            yield return new WaitUntil(() => Input.GetKeyDown(_button3.MappingKeyCode));
+            _button3.Background.color = _defaultBorderColor;
+            StartCoroutine (Button4Activate());
+        }
+
+        IEnumerator Button4Activate()
+        {
+            _button4.Background.color = Color.blue;
+            yield return new WaitUntil(() => Input.GetKeyDown(_button4.MappingKeyCode));
+            _button4.Background.color = _defaultBorderColor;
+            StartCoroutine(Button5Activate());
+        }
+
+        IEnumerator Button5Activate()
+        {
+            _button5.Background.color = Color.blue;
+            yield return new WaitUntil(() => Input.GetKeyDown(_button5.MappingKeyCode));
+            _button5.Background.color = _defaultBorderColor;
+            StartCoroutine(Win());
+        }
+
     }
 }
