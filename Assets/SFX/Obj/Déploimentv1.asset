@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   safeName: 
   presetDescription: 
-  files: []
+  files:
+  - {fileID: 8300000, guid: d625d4bc6d1efcc46bf168f0ff778357, type: 3}
   loopStart: 0
   loopEnd: 0
   bpm: 120

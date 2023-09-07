@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   safeName: 
   presetDescription: 
-  files: []
+  files:
+  - {fileID: 8300000, guid: 2356c34b980ff894eaa7d0e2fc09d10b, type: 3}
   loopStart: 0
   loopEnd: 0
   bpm: 120
@@ -46,14 +47,14 @@ MonoBehaviour:
     rate: 0
     depth: 0
   distortionFilter:
-    enabled: 0
-    distortionLevel: 0
+    enabled: 1
+    distortionLevel: 0.5
   echoFilter:
     enabled: 0
-    delay: 0
-    decayRatio: 0
-    wetMix: 0
-    dryMix: 0
+    delay: 500
+    decayRatio: 1
+    wetMix: 1
+    dryMix: 1
   lowPassFilter:
     enabled: 0
     cutoffFrequency: 0
