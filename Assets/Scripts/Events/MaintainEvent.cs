@@ -117,6 +117,8 @@ namespace GF
 
         public IEnumerator Win()
         {
+            SendWin();
+
             ResetState();
             Destroy(gameObject);
 
@@ -125,6 +127,8 @@ namespace GF
 
         public IEnumerator Lose()
         {
+            SendLose();
+
             _hasBegunPressing = false;
 
             ResetState();

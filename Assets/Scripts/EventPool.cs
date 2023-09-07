@@ -10,7 +10,7 @@ namespace GF
     {
         public static EventPool Instance { get; private set; }
 
-        [field: SerializeField] public float GameSpeed { get; private set; }
+        [field: SerializeField] public float GameSpeed { get; set; }
 
         [SerializeField] private int _maxConsecutiveEvent;
 
@@ -35,7 +35,7 @@ namespace GF
 
             while (true)
             {
-                if(_events.Count > 0)
+                if (_events.Count > 0)
                 {
                     var index = Random.Range(0, _events.Count);
                     var eventObject = _events.ElementAtOrDefault(index);

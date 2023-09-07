@@ -91,8 +91,11 @@ namespace GF
         private void ResetState()
         {
         }
+
         public IEnumerator Win()
         {
+            SendWin();
+
             ResetState();
             Destroy(gameObject);
 
@@ -101,6 +104,8 @@ namespace GF
 
         public IEnumerator Lose()
         {
+            SendLose();
+
             ResetState();
             Destroy(gameObject);
 
