@@ -10,7 +10,11 @@ namespace GF
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Return))
+            if ((Input.GetKey((KeyCode)EInputMap.JOYSTICK_1_RIGHT) &&
+                Input.GetKey((KeyCode)EInputMap.JOYSTICK_2_UP) &&
+                Input.GetKey((KeyCode)EInputMap.JOYSTICK_3_UP) &&
+                Input.GetKey((KeyCode)EInputMap.JOYSTICK_4_LEFT)) ||
+                Input.GetKey(KeyCode.Return))
             {
                 StartCoroutine(Win());
             }
