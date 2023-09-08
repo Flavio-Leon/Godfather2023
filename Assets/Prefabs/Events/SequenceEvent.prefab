@@ -448,6 +448,7 @@ MonoBehaviour:
   _audio5: {fileID: 11400000, guid: 99d510ecab9168348ade3ac46b51482e, type: 2}
   _audio6: {fileID: 11400000, guid: fe5a917a565a1e040ae0feb91917a364, type: 2}
   _audio7: {fileID: 11400000, guid: bd75303b7915a51448539b114a8f6957, type: 2}
+  _audio8: {fileID: 11400000, guid: 3da2b9ec6c4728d40a062a8d2f438756, type: 2}
 --- !u!114 &447969861544515126
 MonoBehaviour:
   m_ObjectHideFlags: 0
