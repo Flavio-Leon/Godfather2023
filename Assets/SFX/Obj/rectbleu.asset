@@ -15,11 +15,11 @@ MonoBehaviour:
   safeName: 
   presetDescription: 
   files:
-  - {fileID: 8300000, guid: acd6f969d3cb74641aa12bb014f4b3c0, type: 3}
+  - {fileID: 8300000, guid: 4811441ab05ea0a4eab6e15b49216a43, type: 3}
   loopStart: 0
   loopEnd: 0
   bpm: 120
-  relativeVolume: 1
+  relativeVolume: 0.7
   spatialize: 0
   maxDistance: 0
   priority: 128

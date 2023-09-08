@@ -2712,7 +2712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1620048491
 Transform:
   m_ObjectHideFlags: 0
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   advancedMode: 0
   onStart: 1
   onEnable: 0
-  onDisable: 2
+  onDisable: 0
   onDestroy: 0
 --- !u!1 &1655355653 stripped
 GameObject:
