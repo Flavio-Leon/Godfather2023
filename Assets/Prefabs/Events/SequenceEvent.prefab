@@ -286,5 +286,5 @@ MonoBehaviour:
   _timerStart: 0
   _timerLeft: 0
   <Text>k__BackingField: {fileID: 5585750734330852025}
-  SequenceTimer: 9
+  SequenceTimer: 13
   istimed: 1

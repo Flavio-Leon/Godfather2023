@@ -155,7 +155,11 @@ namespace GF
         {
             while (!_hasBegunPressing)
             {
-                _button.Background.color = _signalIt % 2 == 0 ? Color.red : _button.DefaultColor;
+                if (_button.Background != null)
+                {
+                    _button.Background.color = _signalIt % 2 == 0 ? Color.red : _button.DefaultColor;
+                }
+
                 _signalIt++;
                 yield return new WaitForSeconds(.5f);
             }
