@@ -73,6 +73,11 @@ namespace GF
             }
         }
 
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
+
         private Button GetButton()
         {
             var busyButtons = Button.Buttons.FindAll(x => x.IsBusy).ToList();
@@ -163,8 +168,11 @@ namespace GF
         }
         private IEnumerator Button1Activate()
         {
+            var _ = _button1.DefaultColor;
+            _button1.DefaultColor = Color.cyan;
             _button1.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button1.MappingKeyCode));
+            _button1.DefaultColor = _;
             _button1.Background.color = _defaultBorderColor;
 
             //audio 1 ici
@@ -176,8 +184,11 @@ namespace GF
 
         private IEnumerator Button2Activate()
         {
+            var _ = _button3.DefaultColor;
+            _button2.DefaultColor = Color.cyan;
             _button2.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button2.MappingKeyCode));
+            _button2.DefaultColor = _;
             _button2.Background.color = _defaultBorderColor;
 
             //audio 2 ici
@@ -189,8 +200,11 @@ namespace GF
 
         private IEnumerator Button3Activate()
         {
+            var _ = _button3.DefaultColor;
+            _button3.DefaultColor = Color.cyan;
             _button3.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button3.MappingKeyCode));
+            _button3.DefaultColor = _;
             _button3.Background.color = _defaultBorderColor;
 
             //audio 3 ici
@@ -202,8 +216,11 @@ namespace GF
 
         private IEnumerator Button4Activate()
         {
+            var _ = _button4.DefaultColor;
+            _button4.DefaultColor = Color.cyan;
             _button4.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button4.MappingKeyCode));
+            _button4.DefaultColor = _;
             _button4.Background.color = _defaultBorderColor;
 
             //audio 4 ici
@@ -215,8 +232,11 @@ namespace GF
 
         private IEnumerator Button5Activate()
         {
+            var _ = _button5.DefaultColor;
+            _button5.DefaultColor = Color.cyan;
             _button5.Background.color = Color.cyan;
             yield return new WaitUntil(() => Input.GetKeyDown(_button5.MappingKeyCode));
+            _button5.DefaultColor = _;
             _button5.Background.color = _defaultBorderColor;
 
             //audio 5 ici

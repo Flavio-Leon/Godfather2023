@@ -10,7 +10,7 @@ namespace GF
     {
         public static readonly List<Button> Buttons = new();
 
-        public Color DefaultColor { get; private set; }
+        public Color DefaultColor { get; set; }
 
         [field: SerializeField] public EInputMap Mapping { get; private set; }
         public KeyCode MappingKeyCode => (KeyCode)Mapping;

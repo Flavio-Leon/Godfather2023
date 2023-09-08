@@ -91,21 +91,27 @@ namespace GF
 
         private void InitTimer()
         {
-            _timerStart =  Vitesse / EventPool.Instance.GameSpeed + 1 / EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f);
+            _timerStart = Vitesse / EventPool.Instance.GameSpeed + 1 / EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f);
         }
 
         private void SetState()
         {
             _button.IsBusy = true;
 
-            _button.Background.color = Color.cyan;
+            if (_button.Background != null)
+            {
+                _button.Background.color = Color.cyan;
+            }
 
             // var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position); worldPos.z
             // = 0;
 
-            Timming.transform.position = _button.transform.position;
-            Repere1.transform.position = _button.transform.position;
-            Repere2.transform.position = _button.transform.position;
+            if (_button != null)
+            {
+                Timming.transform.position = _button.transform.position;
+                Repere1.transform.position = _button.transform.position;
+                Repere2.transform.position = _button.transform.position;
+            }
         }
 
         private void ResetState()
