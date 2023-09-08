@@ -54,7 +54,7 @@ namespace GF
             _lastColor = Background.color;
             DefaultColor = _lastColor;
 
-            Text.text = MappingKeyCode.ToString().Replace("Alpha", string.Empty).Replace("Arrow", string.Empty);
+            //Text.text = MappingKeyCode.ToString().Replace("Alpha", string.Empty).Replace("Arrow", string.Empty);
             DefaultText = Text.text;
 
             if (Sprite != null && 
