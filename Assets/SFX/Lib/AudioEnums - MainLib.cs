@@ -23,7 +23,9 @@
         Phaserstv1,
         Sweep,
         WarningSTinvertedv1,
-        WarningSTv1
+        WarningSTv1,
+        TriggerMaintain,
+        Ambientv1
     }
     public enum MainLibMusic {
     }

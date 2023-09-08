@@ -43,6 +43,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e2d4b85016a4f742adcac3c80336345, type: 2}
   - {fileID: 11400000, guid: bde821a61e361ad43b8b3ba825ad92fb, type: 2}
   - {fileID: 11400000, guid: 8cbf2d5cbf09d4b4e8513842d4765bd7, type: 2}
+  - {fileID: 11400000, guid: d7a0c69f1f43ad141a2e1fec4d315295, type: 2}
   Music: []
   useCustomNames: 0
   generatedName: MainLib
@@ -58,6 +59,7 @@ MonoBehaviour:
   - name: sfx
     files:
     - {fileID: 11400000, guid: db0a43fa54dbb604cb825622c492e8f9, type: 2}
+    - {fileID: 11400000, guid: d7a0c69f1f43ad141a2e1fec4d315295, type: 2}
     - {fileID: 11400000, guid: 520f04f2a4449f54883c831ec0213f4f, type: 2}
     - {fileID: 11400000, guid: 5d94c015142e7a647b03a44ca0ed2da8, type: 2}
     - {fileID: 11400000, guid: 5c5f173bc1d370d41860a3e5a7260b9f, type: 2}
