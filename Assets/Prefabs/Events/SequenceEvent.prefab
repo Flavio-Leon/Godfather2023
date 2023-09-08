@@ -272,7 +272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1564.115, y: -1012.824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &175383190310849418
@@ -347,7 +347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1564.115, y: -1012.824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7710808604011080488
@@ -441,6 +441,13 @@ MonoBehaviour:
   <Text>k__BackingField: {fileID: 5585750734330852025}
   SequenceTimer: 13
   istimed: 1
+  _audio1: {fileID: 11400000, guid: 8391e5a17a79a01488534a09f8cceb6a, type: 2}
+  _audio2: {fileID: 11400000, guid: 6635092797472d140ac9059940faec9a, type: 2}
+  _audio3: {fileID: 11400000, guid: e1a6fa66a22312942930f47838d205c0, type: 2}
+  _audio4: {fileID: 11400000, guid: 829eb37ecd91b6c4ea9289a4738c4d86, type: 2}
+  _audio5: {fileID: 11400000, guid: 99d510ecab9168348ade3ac46b51482e, type: 2}
+  _audio6: {fileID: 11400000, guid: fe5a917a565a1e040ae0feb91917a364, type: 2}
+  _audio7: {fileID: 11400000, guid: bd75303b7915a51448539b114a8f6957, type: 2}
 --- !u!114 &447969861544515126
 MonoBehaviour:
   m_ObjectHideFlags: 0
