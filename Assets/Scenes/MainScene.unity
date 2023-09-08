@@ -2745,7 +2745,7 @@ MonoBehaviour:
   onStart: 1
   onEnable: 0
   onDisable: 0
-  onDestroy: 2
+  onDestroy: 0
 --- !u!1 &1655355653 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8247920300332060881, guid: 4fa40efafe1f1d14087beff8680a8950, type: 3}
