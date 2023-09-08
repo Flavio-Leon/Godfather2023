@@ -1,7 +1,11 @@
+#define ITCH
+
 using UnityEngine;
+
 
 namespace GF
 {
+#if ARCADE
     internal enum EInputMap
     {
         NO_MAPPING,
@@ -46,4 +50,50 @@ namespace GF
         UP_PANNEL_RIGHT_RED = KeyCode.LeftBracket,
         UP_PANNEL_RIGHT_BLUE = KeyCode.Equals,
     }
+#else
+    internal enum EInputMap
+    {
+        NO_MAPPING,
+        JOYSTICK_1_UP = KeyCode.Z,
+        JOYSTICK_1_DOWN = KeyCode.S,
+        JOYSTICK_1_LEFT = KeyCode.Q,
+        JOYSTICK_1_RIGHT = KeyCode.D,
+        JOYSTICK_1_BUTTON_UP = KeyCode.A,
+        JOYSTICK_1_BUTTON_DOWN = KeyCode.E,
+        JOYSTICK_2_UP = KeyCode.T,
+        JOYSTICK_2_DOWN = KeyCode.G,
+        JOYSTICK_2_LEFT = KeyCode.F,
+        JOYSTICK_2_RIGHT = KeyCode.H,
+        JOYSTICK_2_BUTTON_UP = KeyCode.R,
+        JOYSTICK_2_BUTTON_DOWN = KeyCode.Y,
+        JOYSTICK_3_UP = KeyCode.I,
+        JOYSTICK_3_DOWN = KeyCode.K,
+        JOYSTICK_3_LEFT = KeyCode.J,
+        JOYSTICK_3_RIGHT = KeyCode.L,
+        JOYSTICK_3_BUTTON_UP = KeyCode.U,
+        JOYSTICK_3_BUTTON_DOWN = KeyCode.O,
+        JOYSTICK_4_UP = KeyCode.UpArrow,
+        JOYSTICK_4_DOWN = KeyCode.DownArrow,
+        JOYSTICK_4_LEFT = KeyCode.LeftArrow,
+        JOYSTICK_4_RIGHT = KeyCode.RightArrow,
+        JOYSTICK_4_BUTTON_UP = KeyCode.Slash,
+        JOYSTICK_4_BUTTON_DOWN = KeyCode.BackQuote,
+        CENTRAL_BUTTON = KeyCode.Space,
+        DOWN_ARROW_LEFT = KeyCode.W,
+        DOWNBUTTON = KeyCode.X,
+        DOWN_ARROW_RIGHT = KeyCode.C,
+        UP_PANNEL_LEFT_YELLOW = KeyCode.Alpha1,
+        UP_PANNEL_LEFT_RED = KeyCode.Alpha2,
+        UP_PANNEL_LEFT_GREEN = KeyCode.Alpha3,
+        UP_PANNEL_LEFT_BLUE = KeyCode.Alpha4,
+        UP_PANNEL_WHITE_BUTTON_1 = KeyCode.Alpha5,
+        UP_PANNEL_WHITE_BUTTON_2 = KeyCode.Alpha6,
+        UP_PANNEL_WHITE_BUTTON_3 = KeyCode.Alpha7,
+        UP_PANNEL_WHITE_BUTTON_4 = KeyCode.Alpha8,
+        UP_PANNEL_WHITE_BUTTON_5 = KeyCode.Alpha9,
+        UP_PANNEL_WHITE_BUTTON_6 = KeyCode.Alpha0,
+        UP_PANNEL_RIGHT_RED = KeyCode.LeftBracket,
+        UP_PANNEL_RIGHT_BLUE = KeyCode.Equals,
+    }
+#endif
 }

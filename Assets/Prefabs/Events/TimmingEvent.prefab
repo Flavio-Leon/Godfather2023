@@ -128,6 +128,9 @@ MonoBehaviour:
   Vitesse: 2
   ScaleStart: 1.5
   ScaleEnd: 0.75
+  _audio1: {fileID: 11400000, guid: 7b3e5dfa01c8d4d42bfbc3550e5b8bb9, type: 2}
+  _audio2: {fileID: 11400000, guid: dd9147dae047fa84a9049cd2121f7d18, type: 2}
+  _audio3: {fileID: 11400000, guid: bd75303b7915a51448539b114a8f6957, type: 2}
 --- !u!1 &2610997102441568205
 GameObject:
   m_ObjectHideFlags: 0

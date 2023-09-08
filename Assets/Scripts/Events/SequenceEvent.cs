@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using JSAM;
 
 namespace GF
 {
@@ -25,6 +26,18 @@ namespace GF
         public float SequenceTimer;
         public bool istimed;
 
+        //insert variable audio
+        [SerializeField] private SoundFileObject _audio1;
+        [SerializeField] private SoundFileObject _audio2;
+        [SerializeField] private SoundFileObject _audio3;
+        [SerializeField] private SoundFileObject _audio4;
+        [SerializeField] private SoundFileObject _audio5;
+        [SerializeField] private SoundFileObject _audio6;
+        [SerializeField] private SoundFileObject _audio7;
+        [SerializeField] private SoundFileObject _audio8;
+
+
+
         private void Awake()
         {
             _button1 = GetButton();
@@ -40,6 +53,10 @@ namespace GF
             InitTimer();
             _timerLeft = _timerStart;
             StartCoroutine(Button1Activate());
+
+            //audio 1 ici
+            AudioManager.PlaySound(_audio8);
+
         }
 
         private void Update()
@@ -89,11 +106,6 @@ namespace GF
 
         private void ResetState()
         {
-            _button1.IsBusy = false;
-            _button2.IsBusy = false;
-            _button3.IsBusy = false;
-            _button4.IsBusy = false;
-            _button5.IsBusy = false;
 
             _button1.Border.color = _defaultBorderColor;
             _button2.Border.color = _defaultBorderColor;
@@ -133,6 +145,8 @@ namespace GF
 
         public IEnumerator Win()
         {
+            //audio win
+            AudioManager.PlaySound(_audio6);
             SendWin();
 
             ResetState();
@@ -143,6 +157,8 @@ namespace GF
 
         public IEnumerator Lose()
         {
+            //audio lose
+            AudioManager.PlaySound(_audio7);
             SendLose();
 
             ResetState();
@@ -158,6 +174,11 @@ namespace GF
             yield return new WaitUntil(() => Input.GetKeyDown(_button1.MappingKeyCode));
             _button1.DefaultColor = _;
             _button1.Background.color = _defaultBorderColor;
+
+            //audio 1 ici
+            AudioManager.PlaySound(_audio1);
+
+            _button1.IsBusy = false;
             StartCoroutine(Button2Activate());
         }
 
@@ -169,6 +190,11 @@ namespace GF
             yield return new WaitUntil(() => Input.GetKeyDown(_button2.MappingKeyCode));
             _button2.DefaultColor = _;
             _button2.Background.color = _defaultBorderColor;
+
+            //audio 2 ici
+            AudioManager.PlaySound(_audio2);
+
+            _button2.IsBusy = false;
             StartCoroutine(Button3Activate());
         }
 
@@ -180,6 +206,11 @@ namespace GF
             yield return new WaitUntil(() => Input.GetKeyDown(_button3.MappingKeyCode));
             _button3.DefaultColor = _;
             _button3.Background.color = _defaultBorderColor;
+
+            //audio 3 ici
+            AudioManager.PlaySound(_audio3);
+
+            _button3.IsBusy = false;
             StartCoroutine(Button4Activate());
         }
 
@@ -191,6 +222,11 @@ namespace GF
             yield return new WaitUntil(() => Input.GetKeyDown(_button4.MappingKeyCode));
             _button4.DefaultColor = _;
             _button4.Background.color = _defaultBorderColor;
+
+            //audio 4 ici
+            AudioManager.PlaySound(_audio4);
+
+            _button4.IsBusy = false;
             StartCoroutine(Button5Activate());
         }
 
@@ -202,6 +238,11 @@ namespace GF
             yield return new WaitUntil(() => Input.GetKeyDown(_button5.MappingKeyCode));
             _button5.DefaultColor = _;
             _button5.Background.color = _defaultBorderColor;
+
+            //audio 5 ici
+            AudioManager.PlaySound(_audio5);
+
+            _button5.IsBusy = false;
             StartCoroutine(Win());
         }
     }

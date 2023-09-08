@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using JSAM;
 
 namespace GF
 {
@@ -26,6 +27,11 @@ namespace GF
         private bool _hasBegunPressing;
         private int _signalIt;
 
+        //insert variable audio
+        [SerializeField] private SoundFileObject _audio1;
+        [SerializeField] private SoundFileObject _audio2;
+        [SerializeField] private SoundFileObject _audio3;
+
         private void Awake()
         {
             if (!AssignButton())
@@ -43,7 +49,10 @@ namespace GF
             var repere1NewScale = new Vector3(repere1ScaleFactor, repere1ScaleFactor, Repere1.transform.localScale.z);
             Repere1.transform.localScale = repere1NewScale;
 
-            Repere2.transform.localScale = new Vector3(ScaleEnd, ScaleEnd, Repere2.transform.localScale.z); ;
+            Repere2.transform.localScale = new Vector3(ScaleEnd, ScaleEnd, Repere2.transform.localScale.z);
+            //audio 1 ici
+            AudioManager.PlaySound(_audio1);
+
         }
 
         private void Update()
@@ -114,6 +123,10 @@ namespace GF
 
         public IEnumerator Win()
         {
+            //audio 2 ici
+            AudioManager.StopSound(_audio1);
+            AudioManager.PlaySound(_audio2);
+
             SendWin();
 
             ResetState();
@@ -124,6 +137,10 @@ namespace GF
 
         public IEnumerator Lose()
         {
+            //audio 3 ici
+            AudioManager.StopSound(_audio1);
+            AudioManager.PlaySound(_audio3);
+
             SendLose();
 
             ResetState();
