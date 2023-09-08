@@ -101,11 +101,6 @@ namespace GF
 
         private void ResetState()
         {
-            _button1.IsBusy = false;
-            _button2.IsBusy = false;
-            _button3.IsBusy = false;
-            _button4.IsBusy = false;
-            _button5.IsBusy = false;
 
             _button1.Border.color = _defaultBorderColor;
             _button2.Border.color = _defaultBorderColor;
@@ -175,6 +170,7 @@ namespace GF
             //audio 1 ici
             AudioManager.PlaySound(_audio1);
 
+            _button1.IsBusy = false;
             StartCoroutine(Button2Activate());
         }
 
@@ -187,6 +183,7 @@ namespace GF
             //audio 2 ici
             AudioManager.PlaySound(_audio2);
 
+            _button2.IsBusy = false;
             StartCoroutine(Button3Activate());
         }
 
@@ -199,6 +196,7 @@ namespace GF
             //audio 3 ici
             AudioManager.PlaySound(_audio3);
 
+            _button3.IsBusy = false;
             StartCoroutine(Button4Activate());
         }
 
@@ -211,6 +209,7 @@ namespace GF
             //audio 4 ici
             AudioManager.PlaySound(_audio4);
 
+            _button4.IsBusy = false;
             StartCoroutine(Button5Activate());
         }
 
@@ -223,6 +222,7 @@ namespace GF
             //audio 5 ici
             AudioManager.PlaySound(_audio5);
 
+            _button5.IsBusy = false;
             StartCoroutine(Win());
         }
     }

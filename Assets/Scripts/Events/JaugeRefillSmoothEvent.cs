@@ -12,6 +12,7 @@ namespace GF
 
         public float VitesseDescente;
         public float refillValue;
+        public GameObject Alerte;
 
         public void SetMaxFluid(float Fluid)
         {
@@ -45,6 +46,16 @@ namespace GF
             if (slider.value <= 0)
             {
                 EventPool.Instance.LoseGame();
+            }
+
+            if (slider.value < 0.3f)
+            {
+                Alerte.SetActive(true);
+                Debug.Log("Alrte");
+            }
+            else
+            {
+                Alerte.SetActive(false);
             }
         }
 

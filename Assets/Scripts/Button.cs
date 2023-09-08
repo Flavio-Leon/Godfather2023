@@ -42,7 +42,13 @@ namespace GF
             Text.text = MappingKeyCode.ToString().Replace("Alpha", string.Empty).Replace("Arrow", string.Empty);
             DefaultText = Text.text;
 
-            if (Sprite != null)
+            if (Sprite != null && 
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_1 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_2 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_3 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_4 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_5 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_6)
             {
                 Sprite.SetActive(false);
             }
@@ -60,18 +66,41 @@ namespace GF
 
                 _lastColor = Background.color;
                 Background.color = Color.green;
-                if (Sprite != null)
+                if (Sprite != null && 
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_1 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_2 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_3 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_4 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_5 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_6)
                 {
                     Sprite?.SetActive(true);
                 }
             }
             else if (Input.GetKeyUp(MappingKeyCode))
             {
-                if (Sprite != null)
+                if (Sprite != null &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_1 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_2 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_3 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_4 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_5 &&
+                    Mapping != EInputMap.UP_PANNEL_WHITE_BUTTON_6)
                 {
                     Sprite?.SetActive(false);
                 }
                 Background.color = DefaultColor;
+            }
+
+            if (Sprite != null &&
+                    Mapping == EInputMap.UP_PANNEL_WHITE_BUTTON_1 ||
+                    Mapping == EInputMap.UP_PANNEL_WHITE_BUTTON_2 ||
+                    Mapping == EInputMap.UP_PANNEL_WHITE_BUTTON_3 ||
+                    Mapping == EInputMap.UP_PANNEL_WHITE_BUTTON_4 ||
+                    Mapping == EInputMap.UP_PANNEL_WHITE_BUTTON_5 ||
+                    Mapping == EInputMap.UP_PANNEL_WHITE_BUTTON_6)
+            {
+                Sprite.SetActive(!IsBusy);
             }
         }
     }
