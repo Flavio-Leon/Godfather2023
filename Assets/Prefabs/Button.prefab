@@ -55,6 +55,19 @@ MonoBehaviour:
   <InnerTimer>k__BackingField: {fileID: 8201562717539236385}
   <Text>k__BackingField: {fileID: 5747113976330606821}
   <IsBusy>k__BackingField: 0
+  Sprite: {fileID: 0}
+  _audio1: {fileID: 11400000, guid: 520f04f2a4449f54883c831ec0213f4f, type: 2}
+  _audio2: {fileID: 11400000, guid: 5d94c015142e7a647b03a44ca0ed2da8, type: 2}
+  _audio3: {fileID: 11400000, guid: 5c5f173bc1d370d41860a3e5a7260b9f, type: 2}
+  _audio4: {fileID: 11400000, guid: 050f68bf6293dcb469e57f7d9d100482, type: 2}
+  _audio5: {fileID: 11400000, guid: d64aa373e5fe7b3449f8e41913886a54, type: 2}
+  _audio6: {fileID: 11400000, guid: a0e4af37956dc964c8c24850ee4265f3, type: 2}
+  _audio7: {fileID: 11400000, guid: a2194f0b59cc39b4289e3491f3bea04c, type: 2}
+  _audio8: {fileID: 11400000, guid: 4fa3ed1739b459849bc43d4051140281, type: 2}
+  _audio9: {fileID: 11400000, guid: d7e1133e835961c4b9cc51e3e5bcd741, type: 2}
+  _audio10: {fileID: 11400000, guid: 51f5ea031d98d1a4caa4645c49067ed5, type: 2}
+  _audio11: {fileID: 11400000, guid: 896d3117d9313704fa7cf5abe973b821, type: 2}
+  _audio12: {fileID: 11400000, guid: 0c91b7f28f53ae542b81d249ebb9e1b4, type: 2}
 --- !u!1 &2116346107277825081
 GameObject:
   m_ObjectHideFlags: 0
