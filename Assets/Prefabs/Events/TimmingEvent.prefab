@@ -125,8 +125,9 @@ MonoBehaviour:
   Timming: {fileID: 7804981646932670526}
   Repere1: {fileID: 2610997102441568205}
   Repere2: {fileID: 4136220137946442911}
-  ScaleStart: 5
-  ScaleEnd: 3
+  Vitesse: 2
+  ScaleStart: 1.5
+  ScaleEnd: 0.75
 --- !u!1 &2610997102441568205
 GameObject:
   m_ObjectHideFlags: 0

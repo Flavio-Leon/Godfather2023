@@ -18,6 +18,7 @@ namespace GF
         public GameObject Repere1;
         public GameObject Repere2;
         private Button _button;
+        public float Vitesse;
         public float ScaleStart = 3;
         public float ScaleEnd = 0;
         private TextMeshProUGUI _buttonText;
@@ -81,7 +82,7 @@ namespace GF
 
         private void InitTimer()
         {
-            _timerStart = 1 / EventPool.Instance.GameSpeed + 1 / EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f);
+            _timerStart =  Vitesse / EventPool.Instance.GameSpeed + 1 / EventPool.Instance.GameSpeed * Random.Range(0f, 0.20f);
         }
 
         private void SetState()
