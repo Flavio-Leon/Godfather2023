@@ -1,9 +1,9 @@
+using JSAM;
 using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using JSAM;
 
 namespace GF
 {
@@ -41,6 +41,7 @@ namespace GF
             }
 
             InitTimer();
+
             SetState();
 
             _timerLeft = _timerStart;
@@ -52,7 +53,6 @@ namespace GF
             Repere2.transform.localScale = new Vector3(ScaleEnd, ScaleEnd, Repere2.transform.localScale.z);
             //audio 1 ici
             AudioManager.PlaySound(_audio1);
-
         }
 
         private void Update()
@@ -106,12 +106,9 @@ namespace GF
             // var worldPos = Camera.main.ScreenToWorldPoint(_button.transform.position); worldPos.z
             // = 0;
 
-            if (_button != null)
-            {
-                Timming.transform.position = _button.transform.position;
-                Repere1.transform.position = _button.transform.position;
-                Repere2.transform.position = _button.transform.position;
-            }
+            Timming.transform.position = _button.transform.position;
+            Repere1.transform.position = _button.transform.position;
+            Repere2.transform.position = _button.transform.position;
         }
 
         private void ResetState()

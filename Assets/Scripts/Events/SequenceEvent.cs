@@ -1,8 +1,8 @@
+using JSAM;
 using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using JSAM;
 
 namespace GF
 {
@@ -36,27 +36,34 @@ namespace GF
         [SerializeField] private SoundFileObject _audio7;
         [SerializeField] private SoundFileObject _audio8;
 
-
-
-        private void Awake()
+        private void Start()
         {
             _button1 = GetButton();
             _button1.IsBusy = true;
+            if (_button1 == null) Destroy(gameObject);
+
             _button2 = GetButton();
             _button2.IsBusy = true;
+            if (_button2 == null) Destroy(gameObject);
+
             _button3 = GetButton();
             _button3.IsBusy = true;
+            if (_button3 == null) Destroy(gameObject);
+
             _button4 = GetButton();
             _button4.IsBusy = true;
+            if (_button4 == null) Destroy(gameObject);
+
             _button5 = GetButton();
             _button5.IsBusy = true;
+            if (_button5 == null) Destroy(gameObject);
+
             InitTimer();
             _timerLeft = _timerStart;
             StartCoroutine(Button1Activate());
 
             //audio 1 ici
             AudioManager.PlaySound(_audio8);
-
         }
 
         private void Update()
@@ -106,7 +113,6 @@ namespace GF
 
         private void ResetState()
         {
-
             _button1.Border.color = _defaultBorderColor;
             _button2.Border.color = _defaultBorderColor;
             _button3.Border.color = _defaultBorderColor;
@@ -168,82 +174,97 @@ namespace GF
         }
         private IEnumerator Button1Activate()
         {
-            var _ = _button1.DefaultColor;
-            _button1.DefaultColor = Color.cyan;
-            _button1.Background.color = Color.cyan;
-            yield return new WaitUntil(() => Input.GetKeyDown(_button1.MappingKeyCode));
-            _button1.DefaultColor = _;
-            _button1.Background.color = _defaultBorderColor;
+            if (_button1.Background != null)
+            {
+                var _ = _button1.DefaultColor;
+                _button1.DefaultColor = Color.cyan;
+                _button1.Background.color = Color.cyan;
+                yield return new WaitUntil(() => Input.GetKeyDown(_button1.MappingKeyCode));
+                _button1.DefaultColor = _;
+                _button1.Background.color = _defaultBorderColor;
 
-            //audio 1 ici
-            AudioManager.PlaySound(_audio1);
+                //audio 1 ici
+                AudioManager.PlaySound(_audio1);
 
-            _button1.IsBusy = false;
-            StartCoroutine(Button2Activate());
+                _button1.IsBusy = false;
+                StartCoroutine(Button2Activate());
+            }
         }
 
         private IEnumerator Button2Activate()
         {
-            var _ = _button3.DefaultColor;
-            _button2.DefaultColor = Color.cyan;
-            _button2.Background.color = Color.cyan;
-            yield return new WaitUntil(() => Input.GetKeyDown(_button2.MappingKeyCode));
-            _button2.DefaultColor = _;
-            _button2.Background.color = _defaultBorderColor;
+            if (_button2.Background != null)
+            {
+                var _ = _button2.DefaultColor;
+                _button2.DefaultColor = Color.cyan;
+                _button2.Background.color = Color.cyan;
+                yield return new WaitUntil(() => Input.GetKeyDown(_button2.MappingKeyCode));
+                _button2.DefaultColor = _;
+                _button2.Background.color = _defaultBorderColor;
 
-            //audio 2 ici
-            AudioManager.PlaySound(_audio2);
+                //audio 2 ici
+                AudioManager.PlaySound(_audio2);
 
-            _button2.IsBusy = false;
-            StartCoroutine(Button3Activate());
+                _button2.IsBusy = false;
+                StartCoroutine(Button3Activate());
+            }
         }
 
         private IEnumerator Button3Activate()
         {
-            var _ = _button3.DefaultColor;
-            _button3.DefaultColor = Color.cyan;
-            _button3.Background.color = Color.cyan;
-            yield return new WaitUntil(() => Input.GetKeyDown(_button3.MappingKeyCode));
-            _button3.DefaultColor = _;
-            _button3.Background.color = _defaultBorderColor;
+            if (_button3.Background != null)
+            {
+                var _ = _button3.DefaultColor;
+                _button3.DefaultColor = Color.cyan;
+                _button3.Background.color = Color.cyan;
+                yield return new WaitUntil(() => Input.GetKeyDown(_button3.MappingKeyCode));
+                _button3.DefaultColor = _;
+                _button3.Background.color = _defaultBorderColor;
 
-            //audio 3 ici
-            AudioManager.PlaySound(_audio3);
+                //audio 3 ici
+                AudioManager.PlaySound(_audio3);
 
-            _button3.IsBusy = false;
-            StartCoroutine(Button4Activate());
+                _button3.IsBusy = false;
+                StartCoroutine(Button4Activate());
+            }
         }
 
         private IEnumerator Button4Activate()
         {
-            var _ = _button4.DefaultColor;
-            _button4.DefaultColor = Color.cyan;
-            _button4.Background.color = Color.cyan;
-            yield return new WaitUntil(() => Input.GetKeyDown(_button4.MappingKeyCode));
-            _button4.DefaultColor = _;
-            _button4.Background.color = _defaultBorderColor;
+            if (_button4.Background != null)
+            {
+                var _ = _button4.DefaultColor;
+                _button4.DefaultColor = Color.cyan;
+                _button4.Background.color = Color.cyan;
+                yield return new WaitUntil(() => Input.GetKeyDown(_button4.MappingKeyCode));
+                _button4.DefaultColor = _;
+                _button4.Background.color = _defaultBorderColor;
 
-            //audio 4 ici
-            AudioManager.PlaySound(_audio4);
+                //audio 4 ici
+                AudioManager.PlaySound(_audio4);
 
-            _button4.IsBusy = false;
-            StartCoroutine(Button5Activate());
+                _button4.IsBusy = false;
+                StartCoroutine(Button5Activate());
+            }
         }
 
         private IEnumerator Button5Activate()
         {
-            var _ = _button5.DefaultColor;
-            _button5.DefaultColor = Color.cyan;
-            _button5.Background.color = Color.cyan;
-            yield return new WaitUntil(() => Input.GetKeyDown(_button5.MappingKeyCode));
-            _button5.DefaultColor = _;
-            _button5.Background.color = _defaultBorderColor;
+            if (_button5.Background != null)
+            {
+                var _ = _button5.DefaultColor;
+                _button5.DefaultColor = Color.cyan;
+                _button5.Background.color = Color.cyan;
+                yield return new WaitUntil(() => Input.GetKeyDown(_button5.MappingKeyCode));
+                _button5.DefaultColor = _;
+                _button5.Background.color = _defaultBorderColor;
 
-            //audio 5 ici
-            AudioManager.PlaySound(_audio5);
+                //audio 5 ici
+                AudioManager.PlaySound(_audio5);
 
-            _button5.IsBusy = false;
-            StartCoroutine(Win());
+                _button5.IsBusy = false;
+                StartCoroutine(Win());
+            }
         }
     }
 }
