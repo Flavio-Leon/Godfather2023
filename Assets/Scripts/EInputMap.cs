@@ -2,7 +2,6 @@
 
 using UnityEngine;
 
-
 namespace GF
 {
 #if ARCADE
