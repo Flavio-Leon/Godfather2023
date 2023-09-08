@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using JSAM;
 
 namespace GF
 {
@@ -24,6 +25,17 @@ namespace GF
         private int _signalIt;
         public float SequenceTimer;
         public bool istimed;
+
+        //insert variable audio
+        [SerializeField] private SoundFileObject _audio1;
+        [SerializeField] private SoundFileObject _audio2;
+        [SerializeField] private SoundFileObject _audio3;
+        [SerializeField] private SoundFileObject _audio4;
+        [SerializeField] private SoundFileObject _audio5;
+        [SerializeField] private SoundFileObject _audio6;
+        [SerializeField] private SoundFileObject _audio7;
+        
+
 
         private void Awake()
         {

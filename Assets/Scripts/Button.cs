@@ -26,6 +26,8 @@ namespace GF
 
         private Color _lastColor;
 
+        //mara here
+
         private void Awake()
         {
             if (!Buttons.Contains(this))
@@ -50,6 +52,10 @@ namespace GF
         {
             if (Input.GetKeyDown(MappingKeyCode))
             {
+                //marahere
+                if (Mapping == EInputMap.UP_PANNEL_WHITE_BUTTON_1) { }
+
+
                 //Debug.Log(Mapping);
 
                 _lastColor = Background.color;
